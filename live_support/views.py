@@ -76,7 +76,7 @@ def get_messages(request):
     """
     user = request.user
     chats = {}
-    for k, v in request.GET.iteritems():
+    for k, v in request.GET.items():
         alive = True
         try:
             messages = ChatMessage.objects.filter(chat__id=k)
