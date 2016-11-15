@@ -112,7 +112,7 @@ def get_messages(request):
                          .exclude(agents=user)\
                          .order_by('-started')
     groups = SupportGroup.objects.filter(
-        Q(supervisors=user) | 
+        Q(supervisors=user) |
         Q(agents=user)
     )
     if groups:
@@ -224,7 +224,7 @@ def client_chat(request, chat_uuid):
         'message_form': message_form,
     }
     return render_to_response('live_support/live_support.html', params,
-                              context_instance=RequestContext(request))
+                              context=RequestContext(request))
 
 
 def start_chat(request, support_group_id=None):
@@ -249,4 +249,4 @@ def start_chat(request, support_group_id=None):
         'admin_active': admin_active,
     }
     return render_to_response('live_support/start_chat.html', params,
-                              context_instance=RequestContext(request))
+                              context=RequestContext(request))
