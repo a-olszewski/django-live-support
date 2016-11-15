@@ -27,7 +27,8 @@ def chat_iframe(context, support_group_id=None):
     return {
         'STATIC_URL': settings.STATIC_URL,
         'url': iframe_url,
-        'admin_active': cache.get(cache_key, False),
+        'admin_active': cache.get(cache_key, False)
+        if not settings.DEBUG else True,
         'request': request,
     }
 
