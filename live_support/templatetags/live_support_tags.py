@@ -12,7 +12,7 @@ def chat_iframe(context, support_group_id=None):
     request = context['request']
     # The default url is the Start Chat page
     if support_group_id:
-        iframe_url = reverse('start_chat', args=[support_group_id])
+        iframe_url = reverse('start_chat_for_group', args=[support_group_id])
         cache_key = 'admin_active_%s' % support_group_id
     else:
         iframe_url = reverse('start_chat')
