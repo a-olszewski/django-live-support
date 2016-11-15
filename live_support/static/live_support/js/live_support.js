@@ -135,12 +135,14 @@ function changeChat(event) {
 
 // Send the message (if there is one) for the currently active chat session.
 function sendMessage(event) {
-    var message = $(event.target).parent().find('.message_box').val();
+    var message = $(event.target).parent().find('.message_box').val(),
+		csrftoken = $(event.target).parent().find('[name="csrfmiddlewaretoken"]').val();
     if (message.trim() != '') {
         var chat_id = $(event.target).parent().find('.chat_id').val();
         var url = $(event.target).parents('form').attr('action');
         var last_message_id = $(event.target).parents('.chat').find('.message_list li:last').attr('id').replace('message_', '');
         var args = {
+			'csrfmiddlewaretoken': csrftoken,
             'message': message,
             'last_message_id': last_message_id,
             'chat_id': chat_id
