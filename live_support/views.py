@@ -4,8 +4,7 @@ except ImportError:
     import json
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render_to_response, get_object_or_404
-from django.template import RequestContext
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import permission_required
 from django.db.models import Q
 from django.core.cache import cache
@@ -223,8 +222,7 @@ def client_chat(request, chat_uuid):
         'chat': chat,
         'message_form': message_form,
     }
-    return render_to_response('live_support/live_support.html',
-                              params, request=request)
+    return render(request, 'live_support/live_support.html', params)
 
 
 def start_chat(request, support_group_id=None):
@@ -248,5 +246,4 @@ def start_chat(request, support_group_id=None):
         'chat_form': chat_form,
         'admin_active': admin_active,
     }
-    return render_to_response('live_support/start_chat.html',
-                              params, request=request)
+    return render(request, 'live_support/start_chat.html', params)
