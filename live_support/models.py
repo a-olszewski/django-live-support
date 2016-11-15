@@ -1,7 +1,8 @@
 from datetime import datetime
 from uuid import uuid4
+
+from django.conf import settings
 from django.db import models
-from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django.core.cache import cache
 
@@ -9,10 +10,10 @@ from django.core.cache import cache
 class SupportGroup(models.Model):
     name = models.CharField(_("name"), max_length=255)
     agents = models.ManyToManyField(
-        User, blank=True, related_name='agent_support_groups'
+        settings.AUTH_USER_MODEL, blank=True, related_name='agent_support_groups'
     )
     supervisors = models.ManyToManyField(
-        User, blank=True, related_name='supervisor_support_groups'
+        settings.AUTH_USER_MODEL, blank=True, related_name='supervisor_support_groups'
     )
 
     def __unicode__(self):
@@ -35,7 +36,8 @@ class Chat(models.Model):
     details = models.TextField(_("question"), blank=True)
     started = models.DateTimeField(auto_now_add=True)
     ended = models.DateTimeField(null=True, blank=True)
-    agents = models.ManyToManyField(User, blank=True, related_name='chats')
+    agents = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, blank=True, related_name='chats')
     objects = models.Manager()
     active = ChatManager()
     support_group = models.ForeignKey(SupportGroup, null=True, blank=True)
@@ -61,7 +63,8 @@ class Chat(models.Model):
 class ChatMessage(models.Model):
     chat = models.ForeignKey(Chat, related_name='messages')
     name = models.CharField(max_length=255, blank=True)
-    agent = models.ForeignKey(User, blank=True, null=True)
+    agent = models.ForeignKey(
+        settings.AUTH_USER_MODEL, blank=True, null=True)
     message = models.TextField()
     sent = models.DateTimeField(auto_now_add=True)
 
