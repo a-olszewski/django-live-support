@@ -1,6 +1,6 @@
-{% load i18n %}
+{% load i18n staticfiles %}
 
-<link href="{{ STATIC_URL }}live_support/css/live_support.css" type="text/css" media="all" rel="stylesheet" />
+<link href="{% static 'live_support/css/live_support.css' %}" type="text/css" media="all" rel="stylesheet" />
 <div class="start_chat">
     <form method="post">
         {% csrf_token %}

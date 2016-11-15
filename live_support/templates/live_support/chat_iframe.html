@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load i18n staticfiles %}
 
 <script type="text/javascript">
     // Toggle the chat panel in and out. 
@@ -19,7 +19,7 @@
         jq = document.createElement('script');
         jq.setAttribute('async', true);
         jq.setAttribute('type', 'text/javascript');
-        jq.setAttribute('src', '{{ STATIC_URL }}live_support/js/jquery.js');
+		jq.setAttribute('src', "{% static 'live_support/js/jquery.js' %}");
         var fs = document.getElementsByTagName('script')[0];
         fs.parentNode.insertBefore(jq, fs);
     }
