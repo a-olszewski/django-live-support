@@ -223,8 +223,8 @@ def client_chat(request, chat_uuid):
         'chat': chat,
         'message_form': message_form,
     }
-    return render_to_response('live_support/live_support.html', params,
-                              context=RequestContext(request))
+    return render_to_response('live_support/live_support.html',
+                              params, request=request)
 
 
 def start_chat(request, support_group_id=None):
@@ -248,5 +248,5 @@ def start_chat(request, support_group_id=None):
         'chat_form': chat_form,
         'admin_active': admin_active,
     }
-    return render_to_response('live_support/start_chat.html', params,
-                              context=RequestContext(request))
+    return render_to_response('live_support/start_chat.html',
+                              params, request=request)
