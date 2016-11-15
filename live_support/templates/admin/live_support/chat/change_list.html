@@ -48,9 +48,7 @@
                             <input type="text" class="message_box" name="message" />
                             <input type="submit" class="send_message_button" value="{% trans 'Send' %}" />
                         </form>
-                        <form method="post" 
-                            action="{% url "end_chat" chat.id %}"
-                        >
+                        <form method="post" action="{% url "end_chat" chat.id %}">
                             {% csrf_token %}
                             <input type="hidden" name="end_chat" value="true" />
                             <input type="submit" class="end_chat_button" value="{% trans 'End' %}" />
