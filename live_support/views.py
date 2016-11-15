@@ -60,7 +60,7 @@ def end_chat(request, chat_id):
     message = ChatMessage()
     name = request.user.first_name or request.user.username
     message.message = '%s has left the chat.  This chat has ended.' % name
-    chat.messages.add(message)
+    chat.messages.add(message, bulk=False)
     if request.POST.get('end_chat') == 'true':
         chat.end()
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
