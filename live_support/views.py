@@ -2,6 +2,7 @@ try:
     import simplejson as json
 except ImportError:
     import json
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
@@ -107,9 +108,9 @@ def get_messages(request):
 
     # Get the list of pending chat sessions, and for each one get a url for
     # joining that chat session.
-    pending_chats = Chat.objects.filter(ended=None)\
-                         .exclude(agents=user)\
-                         .order_by('-started')
+    pending_chats = Chat.objects.filter(ended=None) \
+        .exclude(agents=user).order_by('-started')
+
     groups = SupportGroup.objects.filter(
         Q(supervisors=user) |
         Q(agents=user)
@@ -227,9 +228,10 @@ def client_chat(request, chat_uuid):
 
 def start_chat(request, support_group_id=None):
     chat_form = ChatForm(request.POST or None)
-    admin_active = cache.get('admin_active', False)
+    admin_active = cache.get('admin_active', settings.DEBUG)
     if support_group_id:
-        admin_active = cache.get('admin_active_%s' % support_group_id, False)
+        admin_active = cache.get(
+            'admin_active_%s' % support_group_id, settings.DEBUG)
     if chat_form.is_valid():
         chat = chat_form.save(commit=False)
         chat.support_group_id = support_group_id
@@ -237,8 +239,7 @@ def start_chat(request, support_group_id=None):
         if admin_active:
             request.session['chat_hash_key'] = chat.hash_key.hex
             return HttpResponseRedirect(reverse(
-                'client_chat',
-                args=[chat.hash_key,])
+                'client_chat', args=[chat.hash_key])
             )
         else:
             return HttpResponse('Thank you for contacting us')
