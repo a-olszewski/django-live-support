@@ -176,7 +176,7 @@ def client_end_chat(request, chat_uuid):
         message = ChatMessage()
         name = request.POST.get('name', 'the user')
         message.message = '%s has left the chat.  This chat has ended.' % name
-        chat.messages.add(message)
+        chat.messages.add(message, bulk=False)
         chat.end()
     return HttpResponse('Thank you')
 
