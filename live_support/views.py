@@ -22,7 +22,7 @@ def join_chat(request, chat_id):
         message = ChatMessage()
         name = request.user.first_name or request.user.username
         message.message = '%s has joined the chat' % name
-        chat.messages.add(message)
+        chat.messages.add(message, bulk=False)
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
