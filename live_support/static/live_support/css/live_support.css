@@ -36,7 +36,7 @@ ul.chat_names li a {
     margin: 10px;
     display: none;
     border: 1px solid #EDF3FE;
-    width: 300px;
+    width: 318px;
     height: 200px;
     position: relative;
 }
@@ -84,7 +84,7 @@ ul.chat_names li a {
 .message_box_container {
     position: absolute;
     bottom: 0;
-    width: 300px;
+    width: 318px;
     height: 25px;
 }
 .message_box_container form {
