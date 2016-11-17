@@ -11,7 +11,7 @@
     function hideChat() {
         // If the chat panel is currently expanded, close it, otherwise 
         // expand it. Aldo swap out the background image of the toggle button.
-        $('.chat_window').animate({'height': '25px', 'width': '200px'}, function() {
+        $('.chat_window').animate({'height': '30px', 'width': '200px'}, function() {
             $('#hide_live_support, #show_live_support, .live_support').toggle();
         });
     }
@@ -34,13 +34,13 @@
     background: #fff;
     overflow: hidden;
     border: thin solid black;
-    height: 25px;
+    height: 30px;
     width: 200px;
 }
 
 .chat_window .live_support {
     width: 318px;
-    height: 225px;
+    height: 220px;
     float: left;
     border: none;
     display: none;
@@ -48,20 +48,14 @@
 
 .chat_window #show_live_support,
 .chat_window #hide_live_support {
-	text-align: center;
-}
-
-.chat_window #show_live_support {
     cursor: pointer;
+	line-height: 30px;
+	text-align: center;
     background: #F2F2F2;
-    padding: 3px;
 }
 
 .chat_window #hide_live_support {
-    cursor: pointer;
-    background: #F2F2F2;
     display: none;
-    padding: 3px;
 }
 
 </style>
@@ -71,7 +65,7 @@
         {% if admin_active %}
         {% trans 'Pomoc online' %} 
         {% else %}
-        {% trans 'Leave a Message' %} 
+        {% trans 'Napisz do nas' %} 
         {% endif %}
     </div>
     <div id="hide_live_support" onClick="hideChat()">
