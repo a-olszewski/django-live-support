@@ -63,14 +63,13 @@
 <div id="live_support_chat" class="chat_window active">
     <div id="show_live_support" onClick="showChat()">
         {% if admin_active %}
-        {% trans 'Pomoc online' %} 
+			{% trans 'Pomoc online' %} 
         {% else %}
-        {% trans 'Napisz do nas' %} 
+			{% trans 'Napisz do nas' %} 
         {% endif %}
     </div>
     <div id="hide_live_support" onClick="hideChat()">
         {% trans 'Napisz do konsultanta' %}
     </div>
-    <iframe class="live_support" src="{{ url }}">
-    </iframe>
+    <iframe class="live_support" src="{{ url }}"></iframe>
 </div>
