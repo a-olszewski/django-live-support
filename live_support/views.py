@@ -22,7 +22,7 @@ def join_chat(request, chat_id):
         chat.agents.add(request.user)
         message = ChatMessage()
         name = request.user.first_name or request.user.username
-        message.message = '%s has joined the chat' % name
+        message.message = '%s dołączył do rozmowy' % name
         chat.messages.add(message, bulk=False)
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
@@ -60,7 +60,7 @@ def end_chat(request, chat_id):
     chat = get_object_or_404(Chat, id=chat_id)
     message = ChatMessage()
     name = request.user.first_name or request.user.username
-    message.message = '%s has left the chat.  This chat has ended.' % name
+    message.message = '%s opuścił rozmowę.  Koniec rozmowy.' % name
     chat.messages.add(message, bulk=False)
     if request.POST.get('end_chat') == 'true':
         chat.end()
@@ -175,7 +175,7 @@ def client_end_chat(request, chat_uuid):
     if request.POST.get('end_chat') == 'true':
         message = ChatMessage()
         name = request.POST.get('name', 'the user')
-        message.message = '%s has left the chat.  This chat has ended.' % name
+        message.message = '%s opuścił rozmowę.  Koniec rozmowy.' % name
         chat.messages.add(message, bulk=False)
         chat.end()
     return HttpResponse('Thank you')
@@ -242,7 +242,7 @@ def start_chat(request, support_group_id=None):
                 'client_chat', args=[chat.hash_key])
             )
         else:
-            return HttpResponse('Thank you for contacting us')
+            return HttpResponse('Wiadomość wysłana, dziękujemy za kontakt')
     params = {
         'chat_form': chat_form,
         'admin_active': admin_active,

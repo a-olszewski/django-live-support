@@ -5,7 +5,9 @@
 <script>
     document.get_messages_url = "{% url "client_get_messages" chat.hash_key %}";
 </script>
+
 <link href="{% static 'live_support/css/live_support.css' %}" type="text/css" media="all" rel="stylesheet" />
+
 <div class="chat">
     <div class="clear_left"></div>
     <div id="chat_{{ chat.id }}" class="message_list" style="display: block;">
@@ -24,7 +26,7 @@
                 {% csrf_token %}
                 <input type="hidden" class="chat_id" name="chat_id" value="{{ chat.id }}" />
                 <input type="text" class="message_box" name="message" />
-                <input type="submit" class="send_message_button" value="{% trans 'Send' %}" />
+                <input type="submit" class="send_message_button" value="{% trans 'Wyślij' %}" />
             </form>
             <form method="post" 
                 action="{% url "client_end_chat" chat.hash_key %}"
@@ -32,7 +34,7 @@
                 {% csrf_token %}
                 <input type="hidden" name="name" value="{{ chat.name }}" />
                 <input type="hidden" name="end_chat" value="true" />
-                <input type="submit" class="end_chat_button" value="{% trans 'End' %}" />
+                <input type="submit" class="end_chat_button" value="{% trans 'Zakończ' %}" />
             </form>
         </div>
     </div>

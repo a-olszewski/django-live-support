@@ -69,7 +69,11 @@
         {% endif %}
     </div>
     <div id="hide_live_support" onClick="hideChat()">
-        {% trans 'Konsultant jest teraz online' %}
+        {% if admin_active %}
+			{% trans 'Konsultant jest teraz online' %}
+        {% else %}
+			{% trans 'Napisz do konsultanta' %} 
+        {% endif %}
     </div>
     <iframe class="live_support" src="{{ url }}"></iframe>
 </div>
