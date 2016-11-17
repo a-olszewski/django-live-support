@@ -236,7 +236,7 @@ def start_chat(request, support_group_id=None):
     if chat_form.is_valid():
         chat = chat_form.save(commit=False)
         chat.name = request.user.username \
-            if request.user.is_authenticated() else _('gość')
+            if request.user.is_authenticated() else _('Ty')
         chat.support_group_id = support_group_id
         chat.save()
         if admin_active:
