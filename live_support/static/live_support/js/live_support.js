@@ -1,6 +1,9 @@
 var check_messages_interval = 2000;
 var current_check_messages_interval = check_messages_interval;
 
+var alertSound = $('<audio />').attr('src', document.alert_sound_url);
+			    
+
 $(document).ready(function() {
     // Bind events for changing the currently active chat and sending a message
     $('.chat_names a').click(changeChat);        
@@ -68,6 +71,8 @@ function gotMessages(resp) {
         getMessagesFailed();
         return;
     }
+	else $alertSound.play();
+
     // If the request was actually successful, reset the wait interval to 
     // the default wait time.
     current_check_messages_interval = check_messages_interval;
