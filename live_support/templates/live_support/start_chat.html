@@ -4,11 +4,13 @@
 <div class="start_chat">
     <form method="post">
         {% csrf_token %}
-        {{ chat_form.as_p }}
+
+        {{ chat_form.details }}
+
         {% if admin_active %}
-        <p><input type="submit" value="{% trans 'Start Chat' %}" /></p>
+			<p><input type="submit" value="{% trans 'Rozpocznij rozmowę' %}" /></p>
         {% else %}
-        <p><input type="submit" value="{% trans 'Leave Message' %}" /></p>
+			<p><input type="submit" value="{% trans 'Wyślij wiadomość' %}" /></p>
         {% endif %}
     </form>
 </div>
