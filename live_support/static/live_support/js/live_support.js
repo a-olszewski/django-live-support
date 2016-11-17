@@ -1,7 +1,7 @@
 var check_messages_interval = 2000;
 var current_check_messages_interval = check_messages_interval;
 
-var $alertSound = $('<audio />').attr('src', document.alert_sound_url);
+var $alertSound = $('<audio />').attr('src', document.alert_sound_url)[0];
 			    
 
 $(document).ready(function() {
