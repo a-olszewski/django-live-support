@@ -112,6 +112,7 @@ ul.chat_names li a {
 }
 
 .start_chat textarea {
+	width: 302px;
     height: 85px;
 }
 
