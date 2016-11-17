@@ -1,10 +1,12 @@
 var check_messages_interval = 2000;
 var current_check_messages_interval = check_messages_interval;
 
-var $alertSound = $('<audio />').attr('src', document.alert_sound_url)[0];
-			    
+var $alertSound = $('<audio />');
+
 
 $(document).ready(function() {
+	$alertSound = $alertSound.attr('src', document.alert_sound_url)[0];
+			    
     // Bind events for changing the currently active chat and sending a message
     $('.chat_names a').click(changeChat);        
     $('.send_message_button').click(sendMessage);
