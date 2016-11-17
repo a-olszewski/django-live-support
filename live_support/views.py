@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import permission_required
 from django.db.models import Q
 from django.core.cache import cache
 from django.utils.html import escape
+from django.utils.translation import ugettext_lazy as _
 
 from live_support.models import Chat, ChatMessage, SupportGroup
 from live_support.forms import ChatMessageForm, ChatForm
