@@ -178,7 +178,7 @@ def client_end_chat(request, chat_uuid):
         message.message = '%s opuścił rozmowę.  Koniec rozmowy.' % name
         chat.messages.add(message, bulk=False)
         chat.end()
-    return HttpResponse('Thank you')
+    return HttpResponse('Dziękujemy za kontakt')
 
 
 def client_post_message(request, chat_uuid):
