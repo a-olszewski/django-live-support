@@ -83,7 +83,7 @@ ul.chat_names li a {
 .message_box_container {
     position: absolute;
     bottom: 0;
-    width: 318px;
+    width: 302px;
     height: 25px;
 }
 .message_box_container form {
