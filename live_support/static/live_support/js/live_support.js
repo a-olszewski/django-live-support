@@ -71,7 +71,7 @@ function gotMessages(resp) {
         getMessagesFailed();
         return;
     }
-	else $alertSound.play();
+	else if(resp.pending_chats) { $alertSound.play(); }
 
     // If the request was actually successful, reset the wait interval to 
     // the default wait time.
