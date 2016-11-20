@@ -41,6 +41,7 @@ ul.chat_names li a {
 }
 
 .message_list ul {
+	font-size: 14px;
     padding: 5px;
     margin: 0;
     overflow-y: scroll;
@@ -92,6 +93,13 @@ ul.chat_names li a {
 }
 .message_box_container input {
     margin: 2px 0;
+}
+.message_box_container input[type="text"] {
+	margin-top: 5px;
+}
+.message_box_container input[type="submit"] {
+	width: 149px;
+	height: 25px;
 }
 .message_box_container .message_box {
     width: 302px;
