@@ -100,7 +100,12 @@ ul.chat_names li a {
 
 .start_chat p {
     padding: 0;
-    margin: 10px 0;
+    margin: 5px 0;
+}
+
+.start_chat p input[type="submit"] {
+	width: 302px;
+    height: 25px;
 }
 
 .start_chat textarea {
