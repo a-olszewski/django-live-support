@@ -45,6 +45,7 @@ ul.chat_names li a {
     margin: 0;
     overflow-y: scroll;
     height: 130px;
+	background: #fff;
 }
 
 .message_list li {

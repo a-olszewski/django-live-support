@@ -51,7 +51,6 @@
     cursor: pointer;
 	line-height: 30px;
 	text-align: center;
-    background: #F2F2F2;
 }
 
 .chat_window #hide_live_support {
@@ -60,7 +59,7 @@
 
 </style>
 
-<div id="live_support_chat" class="chat_window active">
+<div id="live_support_chat" class="chat_window active{% if admin_active %} online{% endif %}">
     <div id="show_live_support" onClick="showChat()">
         {% if admin_active %}
 			{% trans 'Konsultant online' %} 
