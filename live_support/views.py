@@ -3,12 +3,12 @@ try:
 except ImportError:
     import json
 from django.conf import settings
-from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import permission_required
 from django.db.models import Q
 from django.core.cache import cache
+from django.urls import reverse
 from django.utils.html import escape
 from django.utils.translation import ugettext_lazy as _
 
