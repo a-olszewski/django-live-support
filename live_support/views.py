@@ -19,7 +19,7 @@ from live_support.forms import ChatMessageForm, ChatForm
 @permission_required('live_support.chat_admin')
 def join_chat(request, chat_id):
     chat = get_object_or_404(Chat, id=chat_id)
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         chat.agents.add(request.user)
         message = ChatMessage()
         name = request.user.first_name or request.user.username
@@ -236,7 +236,7 @@ def start_chat(request, support_group_id=None):
     if chat_form.is_valid():
         chat = chat_form.save(commit=False)
         chat.name = request.user.username \
-            if request.user.is_authenticated() else _('Ty')
+            if request.user.is_authenticated else _('Ty')
         chat.support_group_id = support_group_id
         chat.save()
         if admin_active:
